@@ -18,6 +18,7 @@ import { Route as AuthenticatedPromptsRouteImport } from './routes/_authenticate
 import { Route as AuthenticatedRepurposeRouteImport } from './routes/_authenticated/repurpose'
 import { Route as AuthenticatedSearchRouteImport } from './routes/_authenticated/search'
 import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
+import { Route as ApiGenerateImageRouteImport } from './routes/api/generate-image'
 import { Route as AuthenticatedCreateIndexRouteImport } from './routes/_authenticated/create.index'
 import { Route as AuthenticatedCreateTypeRouteImport } from './routes/_authenticated/create.$type'
 import { Route as AuthenticatedLibraryIndexRouteImport } from './routes/_authenticated/library.index'
@@ -69,6 +70,11 @@ const AuthenticatedSettingsRoute = AuthenticatedSettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const ApiGenerateImageRoute = ApiGenerateImageRouteImport.update({
+  id: '/api/generate-image',
+  path: '/api/generate-image',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedCreateIndexRoute =
   AuthenticatedCreateIndexRouteImport.update({
     id: '/create/',
@@ -112,6 +118,7 @@ export interface FileRoutesByFullPath {
   '/repurpose': typeof AuthenticatedRepurposeRoute
   '/search': typeof AuthenticatedSearchRoute
   '/settings': typeof AuthenticatedSettingsRoute
+  '/api/generate-image': typeof ApiGenerateImageRoute
   '/create/$type': typeof AuthenticatedCreateTypeRoute
   '/library/$id': typeof AuthenticatedLibraryIdRoute
   '/projects/$id': typeof AuthenticatedProjectsIdRoute
@@ -128,6 +135,7 @@ export interface FileRoutesByTo {
   '/repurpose': typeof AuthenticatedRepurposeRoute
   '/search': typeof AuthenticatedSearchRoute
   '/settings': typeof AuthenticatedSettingsRoute
+  '/api/generate-image': typeof ApiGenerateImageRoute
   '/create/$type': typeof AuthenticatedCreateTypeRoute
   '/library/$id': typeof AuthenticatedLibraryIdRoute
   '/projects/$id': typeof AuthenticatedProjectsIdRoute
@@ -146,6 +154,7 @@ export interface FileRoutesById {
   '/_authenticated/repurpose': typeof AuthenticatedRepurposeRoute
   '/_authenticated/search': typeof AuthenticatedSearchRoute
   '/_authenticated/settings': typeof AuthenticatedSettingsRoute
+  '/api/generate-image': typeof ApiGenerateImageRoute
   '/_authenticated/create/$type': typeof AuthenticatedCreateTypeRoute
   '/_authenticated/library/$id': typeof AuthenticatedLibraryIdRoute
   '/_authenticated/projects/$id': typeof AuthenticatedProjectsIdRoute
@@ -164,6 +173,7 @@ export interface FileRouteTypes {
     | '/repurpose'
     | '/search'
     | '/settings'
+    | '/api/generate-image'
     | '/create/$type'
     | '/library/$id'
     | '/projects/$id'
@@ -180,6 +190,7 @@ export interface FileRouteTypes {
     | '/repurpose'
     | '/search'
     | '/settings'
+    | '/api/generate-image'
     | '/create/$type'
     | '/library/$id'
     | '/projects/$id'
@@ -197,6 +208,7 @@ export interface FileRouteTypes {
     | '/_authenticated/repurpose'
     | '/_authenticated/search'
     | '/_authenticated/settings'
+    | '/api/generate-image'
     | '/_authenticated/create/$type'
     | '/_authenticated/library/$id'
     | '/_authenticated/projects/$id'
@@ -209,6 +221,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
+  ApiGenerateImageRoute: typeof ApiGenerateImageRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -275,6 +288,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/settings'
       preLoaderRoute: typeof AuthenticatedSettingsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/api/generate-image': {
+      id: '/api/generate-image'
+      path: '/api/generate-image'
+      fullPath: '/api/generate-image'
+      preLoaderRoute: typeof ApiGenerateImageRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/_authenticated/create/': {
       id: '/_authenticated/create/'
@@ -358,6 +378,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
+  ApiGenerateImageRoute: ApiGenerateImageRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
