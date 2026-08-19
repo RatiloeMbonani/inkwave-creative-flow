@@ -1,32 +1,16 @@
 export function BrandMark({ className = "" }: { className?: string }) {
   return (
     <span
-      className={`relative inline-flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-[0.75rem] bg-brand-gradient shadow-card ${className}`}
+      className={`inline-flex size-9 shrink-0 items-center justify-center rounded-xl bg-brand-gradient ${className}`}
       aria-hidden="true"
     >
-      <svg viewBox="0 0 32 32" className="size-7">
-        <defs>
-          <linearGradient id="inkwave-sheen" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="oklch(1 0 0)" stopOpacity="0.95" />
-            <stop offset="100%" stopColor="oklch(1 0 0)" stopOpacity="0.6" />
-          </linearGradient>
-        </defs>
-        {/* ink drop */}
+      <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2.2">
         <path
-          d="M16 5.5c3.4 3.9 5.6 6.7 5.6 9.4a5.6 5.6 0 0 1-11.2 0c0-2.7 2.2-5.5 5.6-9.4Z"
-          fill="url(#inkwave-sheen)"
-        />
-        {/* waves rippling out of the drop */}
-        <g
-          fill="none"
-          stroke="url(#inkwave-sheen)"
-          strokeWidth="2"
+          d="M2 15c2.5-4 4.5-4 7 0s4.5 4 7 0 4.5-4 6-1.5"
+          stroke="oklch(0.99 0.004 250)"
           strokeLinecap="round"
-          opacity="0.9"
-        >
-          <path d="M4 21.5c2-2.2 3.6-2.2 5.6 0s3.6 2.2 5.6 0 3.6-2.2 5.6 0 3.6 2.2 5.6 0" />
-          <path d="M6.5 26.2c1.6-1.8 2.9-1.8 4.5 0s2.9 1.8 4.5 0 2.9-1.8 4.5 0" opacity="0.6" />
-        </g>
+        />
+        <path d="M12 3v6" stroke="oklch(0.99 0.004 250)" strokeLinecap="round" />
       </svg>
     </span>
   );
