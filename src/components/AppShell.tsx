@@ -13,16 +13,19 @@ import {
   Menu,
   X,
   Search,
+  Wand2,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { BrandLogo } from "./BrandMark";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { ThemeToggle } from "./ThemeToggle";
 
 const NAV = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { to: "/create", label: "Create", icon: PenLine },
+  { to: "/studio", label: "Studio", icon: Wand2 },
   { to: "/repurpose", label: "Repurpose", icon: Repeat2 },
   { to: "/library", label: "Library", icon: Library },
   { to: "/prompts", label: "Prompts", icon: Sparkles },
@@ -144,6 +147,7 @@ export function AppShell({
                   <Search className="size-4.5" />
                 </Link>
               </Button>
+              <ThemeToggle />
               {actions}
             </div>
           </div>
