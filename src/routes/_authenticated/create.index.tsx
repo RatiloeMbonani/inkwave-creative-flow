@@ -1,7 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AppShell } from "@/components/AppShell";
 import { CONTENT_TYPES } from "@/lib/content-types";
-import { FileText, Share2, Mail, Code2, ArrowRight } from "lucide-react";
+import {
+  FileText,
+  Share2,
+  Mail,
+  Code2,
+  ArrowRight,
+  Image as ImageIcon,
+  Video,
+} from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/create/")({
   head: () => ({
