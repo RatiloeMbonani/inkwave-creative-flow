@@ -46,6 +46,26 @@ function CreateIndex() {
             </Link>
           );
         })}
+
+        {MEDIA.map(({ tab, label, blurb, icon: Icon }) => (
+          <Link
+            key={tab}
+            to="/studio"
+            search={{ tab }}
+            className="bg-card hover:border-primary/40 group flex items-start gap-4 rounded-2xl border p-6 shadow-card transition-colors"
+          >
+            <span className="bg-accent text-primary inline-flex size-11 shrink-0 items-center justify-center rounded-xl">
+              <Icon className="size-5" aria-hidden="true" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="flex items-center gap-2 text-base font-semibold">
+                {label}
+                <ArrowRight className="size-4 opacity-0 transition-opacity group-hover:opacity-100" />
+              </span>
+              <span className="text-muted-foreground mt-1 block text-sm">{blurb}</span>
+            </span>
+          </Link>
+        ))}
       </div>
     </AppShell>
   );
