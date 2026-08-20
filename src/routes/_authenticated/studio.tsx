@@ -35,15 +35,19 @@ export const Route = createFileRoute("/_authenticated/studio")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
+  validateSearch: (search: Record<string, unknown>) => ({
+    tab: search['tab'] === "video" ? ("video" as const) : ("image" as const),
+  }),
   component: StudioPage,
 });
 
 const PLATFORM_KEYS = Object.keys(MEDIA_PLATFORMS) as MediaPlatform[];
 
 function StudioPage() {
+  const { tab } = Route.useSearch();
   return (
     <AppShell title="Visual Studio" subtitle="Images and videos tuned to your tone, language and platform">
-      <Tabs defaultValue="image" className="max-w-6xl">
+      <Tabs defaultValue={tab} className="max-w-6xl">
         <TabsList>
           <TabsTrigger value="image">
             <ImageIcon className="mr-2 size-4" /> Image
