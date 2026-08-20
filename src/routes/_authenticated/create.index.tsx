@@ -19,6 +19,21 @@ export const Route = createFileRoute("/_authenticated/create/")({
 
 const ICON = { blog: FileText, social: Share2, email: Mail, code: Code2 } as const;
 
+const MEDIA = [
+  {
+    tab: "image" as const,
+    label: "Image",
+    blurb: "AI visuals tuned to tone, language & platform",
+    icon: ImageIcon,
+  },
+  {
+    tab: "video" as const,
+    label: "Video",
+    blurb: "Short AI video clips for your channels",
+    icon: Video,
+  },
+];
+
 function CreateIndex() {
   return (
     <AppShell title="Create" subtitle="What are we making today?">
