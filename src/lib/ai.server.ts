@@ -3,7 +3,8 @@
  * the model/provider can be swapped without touching feature code.
  */
 
-export const DEFAULT_TEXT_MODEL = "google/gemini-3.5-flash";
+// Cheapest capable text model so each generation costs a fraction of a credit.
+export const DEFAULT_TEXT_MODEL = "google/gemini-3.1-flash-lite";
 
 export class AiServiceError extends Error {
   status: number;
@@ -28,7 +29,7 @@ function friendly(status: number, raw: string): AiServiceError {
       );
     case 402:
       return new AiServiceError(
-        "This workspace is out of AI credits. Top up credits to keep generating.",
+        "Daily AI allowance used up. It resets each day — or add credits to keep generating now.",
         402,
         false,
       );

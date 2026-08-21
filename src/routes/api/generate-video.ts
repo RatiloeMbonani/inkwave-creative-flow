@@ -26,7 +26,7 @@ export const Route = createFileRoute("/api/generate-video")({
         const upstream = await fetch(GATEWAY, {
           method: "POST",
           headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-          body: JSON.stringify({ model: "google/veo-3.1-fast", prompt, seconds, size }),
+          body: JSON.stringify({ model: "google/veo-3.1-lite", prompt, seconds, size }),
         });
         return new Response(await upstream.text(), {
           status: upstream.status,
