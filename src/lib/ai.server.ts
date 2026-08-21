@@ -29,7 +29,7 @@ function friendly(status: number, raw: string): AiServiceError {
       );
     case 402:
       return new AiServiceError(
-        "This workspace is out of AI credits. Top up credits to keep generating.",
+        "Daily AI allowance used up. It resets each day — or add credits to keep generating now.",
         402,
         false,
       );
